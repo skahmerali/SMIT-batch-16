@@ -41,3 +41,11 @@
 3. on branch change the name of branch (from none to main )
 4. click save
 
+*** If you want to clone someonse repo ***
+1. go to the repo and click on code button (green color) 
+2. now you can see the link and copy it (though cop button)
+3. open the folder where you want to get the repo and open there a terminal 
+4. git clone <link>
+
+***if you want to get the existing repo uptodate***
+1. git pull
