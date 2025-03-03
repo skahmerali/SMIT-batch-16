@@ -2,7 +2,7 @@
 
 1. Download git it from https://git-scm.com/
 2. install in your windows diractory (C:)
-3. check you git status through git -v or git --version
+3. check you git status through git -v or git --version in cmd 
 
 **How to push the code in the github**
 
