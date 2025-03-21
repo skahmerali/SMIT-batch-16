@@ -1,0 +1,14 @@
+body{
+    background-color: black;
+}
+table{
+    /* border: 2px solid black; */
+    margin: 30px auto;
+}
+td{
+    border: 2px solid red;
+    padding: 10px;
+}
+.span{
+    border: none;
+}
