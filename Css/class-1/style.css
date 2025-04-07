@@ -1,0 +1,44 @@
+/* if your are calling the class container so must use . (fullstop) */
+
+/* class selector */
+/* .h1 {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+} */
+/* .main .header .logo {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+} */
+
+/* type selector */
+/* div {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+} */
+
+/* Id selector */
+
+/* #main {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+} */
+
+/* Universal selector */
+/* * {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+} */
+
+/* Colors topic */
+.heading {
+  /* color: darkkhaki; */
+  /* color: rgb(250, 200, 100); */
+  /* color: #c8c593; */
+  /* color: hsl(57, 33%, 68%); */
+}
