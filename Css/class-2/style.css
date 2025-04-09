@@ -1,0 +1,32 @@
+/* .main {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0.2;
+} */
+
+/* @font-face {
+  font-family: "roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); */
+.first {
+  width: 500px;
+  /* height: 200px; */
+  background-color: rgb(255, 93, 93);
+  color: rgb(0, 0, 0);
+  font-family: roboto;
+  font-style: oblique;
+  font-size: 50px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  text-decoration: underline;
+  text-align: center;
+  /* opacity: 0.2; */
+}
+/* .second {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(0, 38, 114);
+  opacity: 0.5;
+} */
