@@ -1,0 +1,440 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Container for content */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+/* Modern Header Styling */
+.header {
+  background-color: rgba(51, 51, 51, 0.95);
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+/* Flex container for logo and nav */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo h1 {
+  font-size: 2em;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* Navigation */
+.navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+/* Hover underline animation */
+.navigation ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #f1c40f;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.navigation ul li a:hover::after {
+  width: 100%;
+}
+
+.navigation ul li a:hover {
+  color: #f1c40f;
+}
+
+/* Hamburger (mobile menu) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section Styles */
+.hero {
+  background: url("./../assets/Flux_Dev_Create_a_visually_appealing_background_image_for_a_re_2.jpg")
+    no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 150px 0;
+}
+
+.hero h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  padding: 10px 20px;
+  background-color: #f1c40f;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+  background-color: #e67e22;
+}
+
+/* Menu Section Styles */
+.menu {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.menu h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+}
+
+.menu-items {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.menu-item {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.menu-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.menu-item h3 {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+.menu-item p {
+  font-size: 1em;
+  color: #555;
+  margin-top: 10px;
+}
+
+.menu-item span {
+  display: block;
+  margin-top: 15px;
+  font-size: 1.2em;
+  color: #f1c40f;
+}
+
+/* About Page Styles */
+.about {
+  background-color: #fff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Customer Reviews Section */
+.reviews {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.reviews h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.review {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.review:hover {
+  transform: scale(1.05);
+}
+
+.reviewer-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewer-info img {
+  border-radius: 50%;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.review p {
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Team Section */
+.team {
+  padding: 50px 0;
+  background-color: #fff;
+}
+
+.team h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.team-member {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.team-member img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.team-member h3 {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+.team-member p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer .footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.footer .social-links,
+.footer .contact-details {
+  flex: 1;
+  text-align: left;
+}
+
+.footer .social-links h3,
+.footer .contact-details h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.footer .social-links a,
+.footer .contact-details p {
+  color: white;
+  font-size: 1em;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footer .social-links a i {
+  margin-right: 10px;
+}
+
+.footer .social-links a:hover,
+.footer .contact-details a:hover {
+  color: #f1c40f;
+}
+
+/* Footer Navigation Bar */
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer-nav ul li {
+  display: inline-block;
+}
+
+.footer-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+  color: #f1c40f;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .navigation ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navigation.active {
+    display: block;
+  }
+  .hero h2 {
+    font-size: 2.5em;
+  }
+
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  .footer .footer-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer .social-links,
+  .footer .contact-details {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reviews-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .team-member img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .team-member h3 {
+    font-size: 1.3em;
+  }
+}
