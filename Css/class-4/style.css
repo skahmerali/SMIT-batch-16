@@ -1,0 +1,11 @@
+.image {
+  background-image: url("./../class-3\ \(Introduction\ to\ AI\ or\ chatgpt\)/assets/output-1.jpg");
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  color: aliceblue;
+}
+.image {
+  text-indent: 20px;
+}

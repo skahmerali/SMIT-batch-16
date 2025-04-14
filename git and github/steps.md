@@ -1,7 +1,7 @@
 **_Steps to download the git_**
 
 1. Download git it from https://git-scm.com/
-2. install in your windows diractory (C:)
+2. install in your windows root diractory (C:)
 3. check you git status through git -v or git --version in cmd 
 
 **How to push the code in the github**
@@ -49,3 +49,5 @@
 
 ***if you want to get the existing repo uptodate***
 1. git pull
+
+
