@@ -1,0 +1,39 @@
+/* .para{
+text-shadow:0px 3px 4px red ;
+color:white;
+}
+.para:first-line{
+    font-size: 300%;
+} */
+a:link {
+  color: red;
+  text-decoration: none;
+}
+a:visited{
+    color: brown;
+}
+/* .btn:hover{
+    color: green;
+transition-duration: 2s;
+} */
+
+.rotate-button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #e60000; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 3s ease-in, background-color 0.3s ease;
+  }
+  /* .rotate-button:hover {
+    transform:rotate;
+    background-color: #cc0000; 
+  } */
+  
+.rotate-button:focus{
+    transform:rotate(360deg);
+    background-color: #cc0000; 
+  } 
+  
