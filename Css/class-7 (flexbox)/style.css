@@ -1,0 +1,21 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  /* flex-wrap: wrap; */
+}
+.item{
+    width: ;
+}
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .box {
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+  }
+  .item {
+    background-color: red;
+    /* display: flex;
+    /* margin: 0% auto;
+    display: block; */
+  }
+}
