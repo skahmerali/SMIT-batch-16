@@ -1,0 +1,41 @@
+.parrent {
+  width: 100px;
+  height: 1000px;
+  background-color: aqua;
+}
+.child1 {
+  display: inline-block;
+  float: right;
+  width: 50%;
+  height: 50px;
+  background-color: rgb(145, 255, 0);
+}
+h1 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  padding: 10px;
+  margin: 0px;
+  width: 100%;
+  background-color: #efefef;
+}
+p.example {
+  margin-top: 100px;
+}
+.child2 {
+  display: inline-block;
+  float: left;
+  width: 40%;
+  height: 50px;
+  background-color: rgb(255, 0, 0);
+  /* z-index: 1000; */
+  /* position: relative; */
+  /* left: 10%;
+    top: 10px; */
+  /* bottom: 10px;
+    right: 50px; */
+  /* position: absolute;
+    left: 10px; */
+  /* position: fixed; */
+}
