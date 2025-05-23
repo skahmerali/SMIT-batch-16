@@ -51,10 +51,10 @@
 // ||
 // !
 // var userEmail = "hello world";
-var userEmail;
-if (!userEmail) {
-    alert("you are right")
-}
+// var userEmail;
+// if (!userEmail) {
+//     alert("you are right")
+// }
 // !=
 // if(5 != "5"){
 
