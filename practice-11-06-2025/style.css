@@ -1,0 +1,47 @@
+.main {
+    width: 100%;
+
+}
+
+.header {
+    border: 1px solid rgb(200, 241, 232);
+    border-radius: 16px;
+    margin: 0% auto;
+}
+.navbar{
+    width: 90%;
+    display: flex;
+
+}
+.logo{
+    width: 30%;
+}
+.logo img{
+    width: 250px;
+}
+.navItems{
+    width: 70%;
+}
+.navItems ul{
+    /* border: 2px solid rgb(227, 227, 227);
+    border-radius: 8px; */
+    text-decoration: none;
+    /* flex property */
+    display: flex;
+    justify-content: center;
+}
+.navItems ul li{
+    width: 100px;
+    padding: 10px;
+    margin-left: 10px ;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+.navItems ul li:hover{
+    text-decoration: underline;
+    color:rgb(200, 241, 232) ;
+    background-color: rgb(255, 87, 87);
+    transition: 0.5s;
+}
