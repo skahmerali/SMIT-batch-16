@@ -1,0 +1,61 @@
+.main {
+  width: 100%;
+  background-color: #191919;
+}
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px 162px;
+  border-bottom: 1px solid #212121;
+}
+.header .logo {
+  width: 20%;
+}
+.header .navItems {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+}
+.header .navItems ul {
+  display: flex;
+  color: white;
+  gap: 30px;
+  font-size: 18px;
+  font-family: Barlow, sans-serif;
+  font-weight: 500;
+  list-style: none;
+}
+.header .navItems ul li:hover {
+  background-color: #262626;
+  border-radius: 8px;
+  padding: 14px 28px;
+}
+.header .navItems button {
+  /* width: 135px;
+    height: 39px; */
+  background-color: #9eff00;
+  border-radius: 8px;
+  font-weight: 500;
+  border-width: 0px;
+  padding: 16px 24px;
+}
+
+/* Hero section */
+.heroSection {
+  height: 100vh;
+  width: 90%;
+  background-color: #000000;;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  margin: 0% auto;
+}
+.heroImage {
+  background-image: url(./assets/Abstract\ Design.png);
+  height: 100vh;
+  width: 100%;
+}
+
+.heroHeading h1{
+    color: white;
+    font-size: 68px
+}
