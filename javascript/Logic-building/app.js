@@ -1,3 +1,4 @@
+// Swaping without using a third varriable
 // var num1 = 5;
 // var num2 = 6;
 // var num1 = +prompt("Enter your first number :"); //5
@@ -17,7 +18,8 @@
 // Task 23/06/2025
 // var sortings = [4, 6, 3, 1, 9];
 // var result = [1, 3, 4, 6, 9];
-
+// insertion sorting
+// bubble sorting
 // let arr = [4, 8, 3, 1, 9];
 // for (i = 0; i < arr.length; i++) {
 //   for (j = i + 1; j < arr.length; j++) {
