@@ -41,8 +41,11 @@ var plan1 = {
 
 function calcAnnual() {
   var bestPrice = plan1.price;
+  // 3.99
   var currDate = new Date();
+  // 7-09-2025 Wed 11:20 AM
   var thisMo = currDate.getMonth();
+  // 6 == 'july'
   for (var i = 0; i < plan1.discountMonths.length; i++) {
     if (plan1.discountMonths[i] === thisMo) {
       bestPrice = plan1.price * 0.8;
