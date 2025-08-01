@@ -1,16 +1,20 @@
-// function add(e) {
-//     console.log(e);
-//     return e;
-// //   var name = "ahmer";
-// //   return name;
+// var name;
+// function saylani(name = 'ali') {
+//   console.log(name);
+//   name = "ahmer";
+//   console.log(name);
+//   return 'name';
+//   //   var name = "ahmer";
+//   //   return name;
 // }
-// const add = () => {
+// // const add = () => {
+// // 1+2
+// // };
 
-// };
-
-// add("ahmer");
-// console.log(add('ahmer'));
-// console.log(e);
+// // console.log(add('ahmer'));
+// // console.log(e);
+// saylani("ali");
+// console.log(saylani());
 // add(111);
 // console.log(add(false));
 
