@@ -31,10 +31,10 @@ const login = () => {
   for (var i = 0; i <= getData.length; i++ ){
     // console.log(getData[i]);
     if(getData[i].email === loginEmail && getData[i].password === loginPassword ){
-      console.log('hello irtiza!!!!');
-    }
-  }
-}
+      console.log(getData[i]);
+    };
+  };
+};
 
 
 
