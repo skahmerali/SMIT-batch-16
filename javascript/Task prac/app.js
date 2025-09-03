@@ -23,4 +23,4 @@
 // for(let i =1; i <= 5; i++ ){
 //     star += val;
 //     document.write(star + "<br />");
-// }
+// } 
