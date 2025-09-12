@@ -1,0 +1,15 @@
+{
+  "name": "revision",
+  "version": "1.0.0",
+  "description": "learning node js",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Server.js"
+  },
+  "author": "Sk Ahmer Ali",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
