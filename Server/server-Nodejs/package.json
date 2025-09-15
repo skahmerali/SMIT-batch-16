@@ -1,0 +1,16 @@
+{
+  "name": "server-nodejs",
+  "version": "1.0.0",
+  "description": "revision class of server",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server.js"
+  },
+  "author": "sk ahmer ali",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5"
+  }
+}
