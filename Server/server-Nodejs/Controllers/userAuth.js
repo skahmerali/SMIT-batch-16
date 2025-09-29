@@ -1,4 +1,54 @@
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
+        console.error('Error connecting to MongoDB:', err);
+    });
+let userData = [
+    {
+        email: 'ahmer@gmail.com',
+        pass: '12345'
+    },
+    {
+        email: 'ali@gmail.com',
+        pass: '54321'
+    }
+]
 function auth(req, res, next) {
+    // console.log(req.ahmer);
+    res.send('hello world!!!');
+}
+function singup(req, res, next) {
+
+    // Defining schema
+    let schemaClass = new mongoose.Schema({
+        name: {
+            type: String,
+            required: true,
+        },
+        age: {
+            type: Number,
+            required: true
+        },
+        date: new Date.now()
+    });
+    // creating model from the schema
+    let Schema = mongoose.model('Ahmer', schemaClass);
+
+    let schema1 = new Schema({
+        name: "GeeksForGeeks"
+    });
+    // will have a default value of John Doe
+    let schema2 = new Schema({});
+
+    const { name, email, password } = req.body;
+
     // console.log(req.ahmer);
     res.send('hello world!!!');
 }

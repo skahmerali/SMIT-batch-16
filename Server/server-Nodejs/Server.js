@@ -13,16 +13,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 //     res.send('hello world!!!');
 // })
 
-let userData = [
-    {
-        email: 'ahmer@gmail.com',
-        pass: '12345'
-    },
-    {
-        email: 'ali@gmail.com',
-        pass: '54321'
-    }
-]
+
 
 app.use('/api', router);
 // app.use((req, res, next) => {
