@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DB, {
+mongoose.connect("", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
@@ -24,7 +24,7 @@ function auth(req, res, next) {
     // console.log(req.ahmer);
     res.send('hello world!!!');
 }
-function singup(req, res, next) {
+async function singup(req, res, next) {
 
     // Defining schema
     let schemaClass = new mongoose.Schema({
@@ -32,25 +32,35 @@ function singup(req, res, next) {
             type: String,
             required: true,
         },
-        age: {
-            type: Number,
-            required: true
+        email: {
+            type: String,
+            required: true,
         },
-        date: new Date.now()
+        password: {
+            type: String,
+            required: true,
+        },
+        // age: {
+        //     type: Number,
+        //     required: true
+        // },
+        // date: new Date.now()
     });
     // creating model from the schema
-    let Schema = mongoose.model('Ahmer', schemaClass);
-
-    let schema1 = new Schema({
-        name: "GeeksForGeeks"
-    });
-    // will have a default value of John Doe
-    let schema2 = new Schema({});
-
-    const { name, email, password } = req.body;
-
-    // console.log(req.ahmer);
-    res.send('hello world!!!');
+    let Schema = mongoose.model('userData', schemaClass);
+    try {
+        const { name, email, password } = req.body;
+        const newUser = new Schema({ name, email, password });
+        await newUser.save(); // Inserts a new document
+        // console.log(req.ahmer);
+        res.send('hello world!!!');
+    }catch(err){
+        res.send({
+            status: 500, 
+            message:"server code is failed",
+            err,
+        })
+    }
 }
 function login(req, res, next) {
     const { userEmail, passowrd } = req.body;
@@ -81,4 +91,4 @@ function login(req, res, next) {
 
 };
 
-module.exports = { auth, login };
+module.exports = { auth, login, singup };
