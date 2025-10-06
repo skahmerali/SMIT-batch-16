@@ -6,7 +6,7 @@ const { ageChecker } = require('../Middleware/ageChecker');
 const router = express.Router();
 
 router.get('/', auth);
-router.post('/login', ageChecker, login);
+router.post('/login', login);
 router.post('/signup', singup);
 
 module.exports = router;
