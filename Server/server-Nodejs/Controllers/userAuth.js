@@ -31,7 +31,7 @@ function auth(req, res, next) {
 }
 async function singup(req, res, next) {
     try {
-        const { name, email, password } = req.body;
+        const { fName, lName, email, password } = req.body;
         // const someOtherPlaintextPassword = 'not_bacon';
         // use for get API to get all user data
         // const data = await Schema.find({})
@@ -49,7 +49,7 @@ async function singup(req, res, next) {
             if (error) {
                 return console.log(error);
             }
-            const newUser = new Schema({ name, email, password: hash });
+            const newUser = new Schema({ fName, lName, email, password: hash });
             newUser.save();
             res.send({
                 status: 200,
@@ -87,6 +87,31 @@ async function singup(req, res, next) {
 
 
     } catch (err) {
+        console.log(err);
+        res.send({
+            status: 500,
+            message: "server code is failed",
+            err,
+        })
+    }
+}
+async function userDetails(req, res, next) {
+    try {
+        // const someOtherPlaintextPassword = 'not_bacon';
+        // use for get API to get all user data
+        // const data = await Schema.find({})
+        // console.log(data);  
+        // use for spacific user finding
+        const users = await Schema.find()
+        console.log(users, 'line number 41');
+        res.send({
+            message: "users recieved", 
+            users
+        })
+
+
+    } catch (err) {
+        console.log(err);
         res.send({
             status: 500,
             message: "server code is failed",
@@ -148,4 +173,4 @@ async function login(req, res, next) {
     }
 };
 
-module.exports = { auth, login, singup };
+module.exports = { auth, login, singup, userDetails };

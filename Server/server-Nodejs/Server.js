@@ -3,12 +3,17 @@ const express = require('express');
 const app = express();
 
 const router = require('./Router/route');
+const path = require('path');
+const cors = require('cors');
 
 const PORT = 3000;
-
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Enable CORS for all origins (for development, use with caution in production)
+app.use(cors());
 // app.get(('/ahmer'), function (req, res, next) {
 //     res.send('hello world!!!');
 // })

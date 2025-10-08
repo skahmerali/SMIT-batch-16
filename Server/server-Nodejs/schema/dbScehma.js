@@ -1,7 +1,11 @@
 const mongoose = require("mongoose")
 // Defining schema
 let schemaClass = new mongoose.Schema({
-    name: {
+    fName: {
+        type: String,
+        required: true,
+    },
+    lName: {
         type: String,
         required: true,
     },
