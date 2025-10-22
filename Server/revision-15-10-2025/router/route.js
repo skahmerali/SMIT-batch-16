@@ -5,6 +5,7 @@ const authrization = require("../middleware/authentication");
 const router = express.Router();
 
 router.post('/createUser', userAuth);
+// middleware
 router.post('/login', authrization, login);
 
 
