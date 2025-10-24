@@ -1,6 +1,7 @@
 // imports/require from third party or any builin functions
 const express = require("express");
-const userData = require('./router/route');
+const userData = require("./router/route");
+const dbCon = require("./db/dbConnection");
 // https://zweck.io/jwt-authentication-in-node-js-with-middleware-a-secure-approach-for-web-applications/
 // Describe local and global varriables
 
@@ -10,7 +11,7 @@ const userData = require('./router/route');
 const PORT = 5000 || process.env.PORT;
 
 const app = express();
-
+dbCon();
 // middleware
 app.use(express.json());
 
@@ -27,13 +28,13 @@ app.use(express.json());
 //       })
 //     }catch(err){
 //         res.send({
-//             err, 
+//             err,
 //             status: 500,
 //             message: "sorry! server is not responding"
 //         })
 //     }
 // });
-app.use('/api', userData);
+app.use("/api", userData);
 
 // req will be come from frontend (user provided data)
 // res will send to frontend the from server/backend (server responded data/result)
@@ -43,7 +44,7 @@ app.get("/", (req, res) => {
 });
 
 // app.put("/api/user",()=>{
-//  const id = req.params 
+//  const id = req.params
 // });
 // app.delete();
 
