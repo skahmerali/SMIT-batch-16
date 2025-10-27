@@ -11,10 +11,10 @@ const dbCon = require("./db/dbConnection");
 const PORT = 5000 || process.env.PORT;
 
 const app = express();
-dbCon();
 // middleware
 app.use(express.json());
 
+dbCon();
 // these are the types of API's
 // app.post("/createUser", async(req, res) => {
 //   // destructure

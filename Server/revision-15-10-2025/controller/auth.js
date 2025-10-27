@@ -9,40 +9,23 @@ async function signUp(req, res) {
     const { firstName, lastName, email, password } = req.body;
     //here we bcrypt user password
     bcrypt.genSalt(saltRounds, function (err, salt) {
-      bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+      bcrypt.hash(password, salt, function (err, hash) {
         const user = {
-            firstName,
-            lastName, 
-            email,
-            password: hash
+          firstName,
+          lastName,
+          email,
+          password: hash,
+          role: "admin",
         };
-
-
-
         // Store hash in your password DB.
+        const result = new userModel(user).save();
+        res.send({
+          message: "signup successfully",
+          result,
+          status: 200,
+        });
       });
     });
-    // const email = "ahmer";
-    // let fname = true;
-    // console.log(email);
-    // console.log(name);
-    // if (email) {
-    //     console.log('here is an email', email);
-    // }
-    // if (fname) {
-    //     console.log('here is an name', fname);
-    // }
-    if (email && name) {
-      return res.send({
-        status: 200,
-        message: "user created successfully",
-      });
-    } else {
-      res.send({
-        status: 201,
-        message: "value is missing",
-      });
-    }
   } catch (err) {
     res.send({
       err,
@@ -55,29 +38,33 @@ async function login(req, res) {
   // destructure
   try {
     const { email, password } = req.body;
-    // const email = "ahmer";
-    // let fname = true;
-    // console.log(email);
-    // console.log(name);
-    // if (email) {
-    //     console.log('here is an email', email);
-    // }
-    // if (fname) {
-    //     console.log('here is an name', fname);
-    // }
-    if (email && password) {
-      const token = jwt.sign({ email, id: "12345", name: "ahmer" });
-      console.log(token);
-      return res.send({
-        status: 200,
-        message: "user created successfully",
-      });
-    } else {
-      res.send({
-        status: 201,
-        message: "value is missing",
-      });
-    }
+
+    const user = await userModel.findOne({ email });
+    console.log(user, "here is a user");
+
+    // Load hash from your password DB.
+    bcrypt.compare(password, user.password, function (err, result) {
+      // result == true
+
+      if (result) {
+        console.log(process.env.JWTSECRETKEY, 'process.env.JWTSECRETKEY')
+        let token = jwt.sign(
+          {
+            email: user.email,
+            firstName: user.firstName,
+            "last name": user.lastName,
+            role: user.role,
+          },
+          process.env.JWTSECRETKEY
+        );
+        console.log(token);
+      }
+    });
+    res.send({
+      status: 200,
+      message: "user login successfully",
+      token,
+    });
   } catch (err) {
     res.send({
       err,
