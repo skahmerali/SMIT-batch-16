@@ -4,11 +4,12 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 async function signUp(req, res) {
-  // destructure
   try {
+    // destructure
     const { firstName, lastName, email, password } = req.body;
-    //here we bcrypt user password
+    //here we are doing bcryption user password
     bcrypt.genSalt(saltRounds, function (err, salt) {
+      // i.e : askndjasndjisnadine99inedin980r32jndw9o pasword in hash
       bcrypt.hash(password, salt, function (err, hash) {
         const user = {
           firstName,
@@ -39,31 +40,31 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
 
-    const user = await userModel.findOne({ email });
-    console.log(user, "here is a user");
+    const dbUser = await userModel.findOne({ email });
+    console.log(dbUser, "here is a user");
 
     // Load hash from your password DB.
-    bcrypt.compare(password, user.password, function (err, result) {
+    bcrypt.compare(password, dbUser.password, function (err, result) {
       // result == true
 
       if (result) {
-        console.log(process.env.JWTSECRETKEY, 'process.env.JWTSECRETKEY')
+        console.log(process.env.JWTSECRETKEY, "process.env.JWTSECRETKEY");
         let token = jwt.sign(
           {
-            email: user.email,
-            firstName: user.firstName,
-            "last name": user.lastName,
-            role: user.role,
+            email: dbUser.email,
+            firstName: dbUser.firstName,
+            "last name": dbUser.lastName,
+            role: dbUser.role,
           },
           process.env.JWTSECRETKEY
         );
         console.log(token);
+        res.send({
+          status: 200,
+          message: "user login successfully",
+          token,
+        });
       }
-    });
-    res.send({
-      status: 200,
-      message: "user login successfully",
-      token,
     });
   } catch (err) {
     res.send({
@@ -73,5 +74,29 @@ async function login(req, res) {
     });
   }
 }
+async function home(req, res) {
+  const { user } = req;
+  console.log(user, "this is line 42");
+  // destructure
+  try {
+    if(user.role=== 'admin'){
+      res.send({
+        status: 200,
+        message: "Welcome Admin",
+      });
 
-module.exports = { signUp, login };
+    }
+      res.send({
+        status: 200,
+        message: "Welcome user",
+      });
+  } catch (err) {
+    res.send({
+      err,
+      status: 500,
+      message: "sorry! server is not responding",
+    });
+  }
+}
+
+module.exports = { signUp, login, home };
