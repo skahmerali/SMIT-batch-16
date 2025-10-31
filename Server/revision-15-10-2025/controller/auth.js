@@ -6,7 +6,7 @@ const saltRounds = 10;
 async function signUp(req, res) {
   try {
     // destructure
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, role } = req.body;
     //here we are doing bcryption user password
     bcrypt.genSalt(saltRounds, function (err, salt) {
       // i.e : askndjasndjisnadine99inedin980r32jndw9o pasword in hash
@@ -16,7 +16,7 @@ async function signUp(req, res) {
           lastName,
           email,
           password: hash,
-          role: "admin",
+          role,
         };
         // Store hash in your password DB.
         const result = new userModel(user).save();
@@ -35,6 +35,7 @@ async function signUp(req, res) {
     });
   }
 }
+
 async function login(req, res) {
   // destructure
   try {
@@ -56,9 +57,14 @@ async function login(req, res) {
             "last name": dbUser.lastName,
             role: dbUser.role,
           },
-          process.env.JWTSECRETKEY
+          process.env.JWTSECRETKEY,
+          { expiresIn: "1d" }
         );
         console.log(token);
+        res.cookie("jwtToken", token, {
+          httpOnly: true,
+          maxAge: "1d", // 1 day in milliseconds
+        });
         res.send({
           status: 200,
           message: "user login successfully",
@@ -74,22 +80,22 @@ async function login(req, res) {
     });
   }
 }
+
 async function home(req, res) {
   const { user } = req;
   console.log(user, "this is line 42");
   // destructure
   try {
-    if(user.role=== 'admin'){
+    if (user.role === "admin") {
       res.send({
         status: 200,
         message: "Welcome Admin",
       });
-
     }
-      res.send({
-        status: 200,
-        message: "Welcome user",
-      });
+    res.send({
+      status: 200,
+      message: "Welcome user",
+    });
   } catch (err) {
     res.send({
       err,
@@ -99,4 +105,21 @@ async function home(req, res) {
   }
 }
 
-module.exports = { signUp, login, home };
+async function updateUser(req, res) {
+  try {
+    const { firstName, lastName } = req.body;
+    const {id} = req.query;
+    console.log({ firstName, lastName, id });
+    res.send({
+      status: 200,
+      message: "user is good to go",
+    });
+  } catch (err) {
+    res.send({
+      status: 500,
+      message: "user not authorized",
+      err,
+    });
+  }
+}
+module.exports = { signUp, login, home, updateUser };
