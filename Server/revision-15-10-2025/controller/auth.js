@@ -108,8 +108,12 @@ async function home(req, res) {
 async function updateUser(req, res) {
   try {
     const { firstName, lastName } = req.body;
-    const {id} = req.query;
+    const { id } = req.query;
     console.log({ firstName, lastName, id });
+    const userFound = await userModel.findById({ _id: id }).exec();
+    console.log(userFound);
+    userFound.firstName = firstName;
+    await userModel.save(userFound);
     res.send({
       status: 200,
       message: "user is good to go",

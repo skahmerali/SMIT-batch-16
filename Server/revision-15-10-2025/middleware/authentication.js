@@ -6,10 +6,10 @@ dotenv.config();
 console.log("secret key", process.env.JWTSECRETKEY);
 
 const authrization = async (req, res, next) => {
-  const header = req.header("Authorization");
+  const header = req.header("Authorization"); // Bearer sakjbjsab.diukcskj.buwwibdi98
   console.log("here is a header", header);
   if (!header) {
-    res.send({
+    return res.send({
       status: 401,
       message: "headers are invalid",
     });

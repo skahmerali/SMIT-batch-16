@@ -8,7 +8,7 @@ console.log(process.env.DB);
 async function dbCon() {
   try {
     const db = await mongoose
-      .connect(process.env.DB)
+      .connect(`mongodb+srv://Ahmer:${process.env.DB}@cluster0.lnsqyol.mongodb.net/?appName=Cluster0`)
       .then(() => console.log("database connected"))
       .catch((err) => console.log(`connection failed ${err}`));
     mongoose.connection.on("connected", () =>
