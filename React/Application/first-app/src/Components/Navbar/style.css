@@ -1,0 +1,23 @@
+.container {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.items-center {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.logo {
+    width: 100px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    width: 20%;
+
+}

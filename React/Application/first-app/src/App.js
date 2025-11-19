@@ -1,16 +1,19 @@
 // import ahmer from './logo.svg';
 // import './App.css';
 
+import Navbar from "./Components/Navbar/Navbar";
+
 function App() {
   // var ahmer = "ahmer"
   return (
-    <>
-      <div>
-        <div>
+    <div width="100%">
+      {/* Class-1 code 
+       <div> 
+       <div>
           Hello world!!!
-        </div>
+        </div> 
 
-        {/* <header className="App-header">
+       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
         Edit <code>src/App.js</code> and save to reload.
@@ -23,12 +26,14 @@ function App() {
           >
           Learn React
           </a>
-          </header> */}
-      </div>
-      <div>
+          </header> 
+       </div> 
+       <div>
         bye bye world!!!
-      </div>
-    </>
+      </div>  */}
+      
+        <Navbar />
+    </div>
   );
 }
 
