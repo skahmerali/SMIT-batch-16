@@ -1,8 +1,10 @@
 // import ahmer from './logo.svg';
 // import './App.css';
 
+import Counter from "./Components/counter";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar/Navbar";
+import Room from "./Components/Room";
 
 function App({ children }) {
   // var ahmer = "ahmer"
@@ -34,7 +36,9 @@ function App({ children }) {
       </div>  */}
       {/* {children} */}
       <Navbar />
-      <Home />
+      {/* <Home /> */}
+      {/* <Room /> */}
+      <Counter />
     </div>
   );
 }
