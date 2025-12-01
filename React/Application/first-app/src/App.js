@@ -36,7 +36,7 @@ function App({ children }) {
       </div>  */}
       {/* {children} */}
       <Navbar />
-      {/* <Home /> */}
+      <Home />
       {/* <Room /> */}
       <Counter />
     </div>
