@@ -5,6 +5,7 @@ import Counter from "./Components/counter";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import Room from "./Components/Room";
+import UserData from "./Container/UserData";
 
 function App({ children }) {
   // var ahmer = "ahmer"
@@ -35,10 +36,11 @@ function App({ children }) {
         bye bye world!!!
       </div>  */}
       {/* {children} */}
-      <Navbar />
-      <Home />
+      {/* <Navbar />
+      <Home /> */}
       {/* <Room /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <UserData />
     </div>
   );
 }

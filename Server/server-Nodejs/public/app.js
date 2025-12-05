@@ -16,7 +16,7 @@ async function signup() {
         //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         // }).join(''));
         console.log(fName, lName, email, password);
-        const res = await axios.post('http://localhost:3000/api/signup', {
+        const res = await axios.post(`https://server-hosting-batch16-git-main-skahmeralis-projects.vercel.app/api/signup`, {
             headers: {
                 'Authorization': `Bearer ${token}`, // For Bearer token authentication
                 'Content-Type': 'application/json' // Or 'application/x-www-form-urlencoded', etc.

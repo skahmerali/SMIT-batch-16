@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Home from './Containers/Home';
 import About from './Containers/About/index';
+import CounerResult from './Containers/CounterResult';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -30,8 +31,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Home />
-      <About />
+      {/* <Home />
+      <About /> */}
+      <CounerResult />
     </>
   )
 }
