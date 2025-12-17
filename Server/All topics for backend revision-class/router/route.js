@@ -1,5 +1,5 @@
 const express = require("express");
-const userData = require("../controller/auth/auth");
+const { userData, signup } = require("../controller/auth/auth");
 
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.post('/user', (req, res) => {
     })
 });
 // add ageChecker middleware before the main function 
-router.post('/userData', userData );
+router.post('/userData', userData);
+router.post('/signup', signup);
 
 
 module.exports = router;
