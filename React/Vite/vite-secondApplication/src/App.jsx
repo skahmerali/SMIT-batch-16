@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { RouterProvider } from "react-router";
+import router from "./router";
 import './App.css'
 import Home from './Containers/Home';
 import About from './Containers/About/index';
 import CounerResult from './Containers/CounterResult';
+
+
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -33,7 +35,12 @@ function App() {
       </p> */}
       {/* <Home />
       <About /> */}
-      <CounerResult />
+      {/* <CounerResult /> */}
+      {/* <ul>
+        <li><Link to="home">Home</Link></li>
+        <li><Link to="">About</Link></li>
+      </ul> */}
+      <RouterProvider router={router} />
     </>
   )
 }

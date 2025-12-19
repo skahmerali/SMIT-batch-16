@@ -1,10 +1,12 @@
 const expressJS = require("express");
 const routing  = require("./router/route");
+const connection = require("./db/connection");
 
 const app = expressJS();
 const PORT = 3000 || process.env.PORT;
 
 app.use(expressJS.json());
+app.use(connection());
 
 app.use('/api', routing);
 
