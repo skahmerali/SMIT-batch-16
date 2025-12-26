@@ -5,14 +5,16 @@
  * @param {string} url The API endpoint URL.
  * @returns {Promise<any>} A promise that resolves with the JSON data or rejects with an error.
  */
-export const fetchData = ({url, params}) => {
+export const apiRequest = ({ url, params = {} }) => {
+    console.log(url, params)
     return new Promise((resolve, reject) => {
-        fetch(url)
-            .then(response => {
+        fetch(url, params)
+            .then((response) => {
                 if (!response.ok) {
                     // If the response is not OK (e.g., 404, 500), reject the promise with an error
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                console.log(response)
                 return response.json();
             })
             .then(data => {
@@ -21,7 +23,7 @@ export const fetchData = ({url, params}) => {
             })
             .catch(error => {
                 // Catch any errors during the fetch or JSON parsing and reject the promise
-                console.error("Error fetching data:", error);
+                console.log("Error fetching data:", error);
                 reject(error);
             });
     });

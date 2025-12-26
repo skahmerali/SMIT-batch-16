@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 export const configuration = {
-    baseURL: process.env.url,
+    baseURL: import.meta.env.VITE_BACKEND_URL,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',

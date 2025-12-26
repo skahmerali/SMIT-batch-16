@@ -1,5 +1,5 @@
 // src/services/auth.js
-import { fetchData } from './../apiServices';
+import { apiRequest } from './../apiServices';
 import { configuration } from '../config';
 
 /**
@@ -8,12 +8,16 @@ import { configuration } from '../config';
  * @param {string} password The user's password.
  * @returns {Promise<object|null>} User data and token on success, null on failure.
  */
-export async function login(email, password) {
+export async function Signup(userEmail, userPassword, userLastName, userFirstName) {
     try {
-        const data = await apiRequest(`${configuration.baseURL}/api/login`,
+        console.log(configuration);
+        const data = await apiRequest(`http://localhost:3000/api/signup`,
             {
-                method: 'POST',
-                body: JSON.stringify({ email, password }),
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userEmail, userPassword, userLastName, userFirstName }),
             });
 
         // Handle successful login (e.g., store token in localStorage/sessionStorage)
