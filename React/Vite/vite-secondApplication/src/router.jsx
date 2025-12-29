@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "./Layout/MainLayout";
 import Home from "./Containers/Home";
 import About from "./Containers/About";
-import SignupForm from "./Containers/realTimeData/Signup";
+import SignupForm from "./Containers/Signup/Signup";
 // import NotFound from "./pages/NotFound";
 
 

@@ -10,16 +10,15 @@ import { configuration } from '../config';
  */
 export async function Signup(userEmail, userPassword, userLastName, userFirstName) {
     try {
-        console.log(configuration);
         const data = await apiRequest(`http://localhost:3000/api/signup`,
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ userEmail, userPassword, userLastName, userFirstName }),
+                body: JSON.stringify({ email: userEmail, password: userPassword, lName: userLastName, fName: userFirstName }),
             });
-
+        console.log(data, 'line 21');
         // Handle successful login (e.g., store token in localStorage/sessionStorage)
         if (data && data.token) {
             localStorage.setItem('userToken', data.token);

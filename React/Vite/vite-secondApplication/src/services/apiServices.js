@@ -5,8 +5,8 @@
  * @param {string} url The API endpoint URL.
  * @returns {Promise<any>} A promise that resolves with the JSON data or rejects with an error.
  */
-export const apiRequest = ({ url, params = {} }) => {
-    console.log(url, params)
+export const apiRequest = (url, params = {}) => {
+    console.log(url, params);
     return new Promise((resolve, reject) => {
         fetch(url, params)
             .then((response) => {
@@ -19,6 +19,7 @@ export const apiRequest = ({ url, params = {} }) => {
             })
             .then(data => {
                 // Resolve the promise with the data
+                console.log(data);
                 resolve(data);
             })
             .catch(error => {
