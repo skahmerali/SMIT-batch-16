@@ -3,12 +3,21 @@ import Box from '@mui/material/Box';
 import Input from '../../Components/inputField';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-export default function Signup() {
+import EditIcon from '@mui/icons-material/Edit';
+
+export default function Signup({ theme }) {
+
     return (
-        <Paper sx={{ width: '50%', p: '20px', m: 'auto', textAlign: 'center' }} >
+        <Paper sx={{ width: theme.area.halfWidth, p: '20px', m: 'auto', textAlign: 'center' }} >
             <Stack>
-                <Typography variant="h4" component="h2">
-                  Signup
+                <EditIcon sx={{
+                    color: {
+                        xs: theme.palette.secondary.main,
+                        md: theme.palette.primary.secondary
+                    }
+                }} />
+                <Typography variant="heading2" component="h2">
+                    Signup
                 </Typography>
                 <Box display="flex" gap="20px">
                     <Input label="first name"
