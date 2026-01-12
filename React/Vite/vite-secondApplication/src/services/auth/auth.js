@@ -15,6 +15,7 @@ export async function Signup(userEmail, userPassword, userLastName, userFirstNam
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization" : `Bearer ${token}`
                 },
                 body: JSON.stringify({ email: userEmail, password: userPassword, lName: userLastName, fName: userFirstName }),
             });
