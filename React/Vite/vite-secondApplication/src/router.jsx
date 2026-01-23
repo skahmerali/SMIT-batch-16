@@ -3,6 +3,7 @@ import MainLayout from "./Layout/MainLayout";
 import Home from "./Containers/Home";
 import About from "./Containers/About";
 import SignupForm from "./Containers/Signup/Signup";
+import Login from "./Containers/Login";
 // import NotFound from "./pages/NotFound";
 
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "about", element: <About /> },
             { path: "signup", element: <SignupForm /> },
+            { path: "login", element: <Login /> },
             // { path: "setting", element: <Setting /> },
         ],
     },

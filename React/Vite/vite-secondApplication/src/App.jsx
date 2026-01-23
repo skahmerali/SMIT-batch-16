@@ -1,12 +1,11 @@
-import { useState } from 'react'
+// import { useState } from "react";
 import { RouterProvider } from "react-router";
 import router from "./router";
-import './App.css'
-import Home from './Containers/Home';
-import About from './Containers/About/index';
-import CounerResult from './Containers/CounterResult';
-
-
+import "./App.css";
+// import Home from "./Containers/Home";
+// import About from "./Containers/About/index";
+// import CounerResult from "./Containers/CounterResult";
+import { AuthContext } from "./Containers/context/auth/authContext";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -40,9 +39,11 @@ function App() {
         <li><Link to="home">Home</Link></li>
         <li><Link to="">About</Link></li>
       </ul> */}
-      <RouterProvider router={router} />
+      <AuthContext>
+        <RouterProvider router={router} />
+      </AuthContext>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

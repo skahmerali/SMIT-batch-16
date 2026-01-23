@@ -39,40 +39,43 @@ async function signUp(req, res) {
 async function login(req, res) {
   // destructure
   try {
+    console.log("hello this is front end request");
     const { email, password } = req.body;
     // email= "ahmer@gmail.com";
     const dbUser = await userModel.findOne({ email });
+    console.log(dbUser);
     // user = { email: "shiekhahmerali@gmail.com", name: "sheikh ahmer", password: "jnjasdjsa2433432#@#@"}
     // console.log(dbUser, "here is a user");
     // password= "saylani zindabad";
     // Load hash from your password DB.
-    bcrypt.compare(password, dbUser.password, function (err, result) {
-      // result == true
+    // bcrypt.compare(password, dbUser.password, function (err, result) {
+    // result == true
 
-      if (result) {
-        // console.log(process.env.JWTSECRETKEY, "process.env.JWTSECRETKEY");
-        let token = jwt.sign(
-          {
-            email: dbUser.email,
-            firstName: dbUser.firstName,
-            "last name": dbUser.lastName,
-            role: dbUser.role,
-          },
-          process.env.JWTSECRETKEY,
-          { expiresIn: "1d" }
-        );
-        // console.log(token);
-        res.cookie("jwtToken", token, {
-          httpOnly: true,
-          maxAge: "1d", // 1 day in milliseconds
-        });
-        res.send({
-          status: 200,
-          message: "user login successfully",
-          token,
-        });
-      }
+    // if (result) {
+    // console.log(process.env.JWTSECRETKEY, "process.env.JWTSECRETKEY");
+    // let token = jwt.sign(
+    //   {
+    //     email: dbUser.email,
+    //     firstName: dbUser.fName,
+    //     "last name": dbUser.lName,
+    //     // role: dbUser.role,
+    //   },
+    //   process.env.JWTSECRETKEY,
+    //   { expiresIn: "1d" },
+    // );
+    // console.log(token);
+    // res.cookie("jwtToken", token, {
+    //   httpOnly: true,
+    //   maxAge: "1d", // 1 day in milliseconds
+    // });
+    res.send({
+      status: 200,
+      message: "user login successfully",
+      dbUser
+      // token,
     });
+    // }
+    // });
   } catch (err) {
     res.send({
       err,

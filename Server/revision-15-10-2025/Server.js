@@ -8,7 +8,7 @@ const dbCon = require("./db/dbConnection");
 // vulnorable way
 // const PORT = 5000 || 3000 || 7000;
 // expacted right soultion to find the available port
-const PORT = 5000 || process.env.PORT;
+const PORT = 7000 || process.env.PORT;
 
 const app = express();
 // middleware
