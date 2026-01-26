@@ -2,6 +2,7 @@
 const express = require("express");
 const userData = require("./router/route");
 const dbCon = require("./db/dbConnection");
+const cors = require("cors");
 // https://zweck.io/jwt-authentication-in-node-js-with-middleware-a-secure-approach-for-web-applications/
 // Describe local and global varriables
 
@@ -13,7 +14,7 @@ const PORT = 7000 || process.env.PORT;
 const app = express();
 // middleware
 app.use(express.json());
-
+app.use(cors());
 dbCon();
 // these are the types of API's
 // app.post("/createUser", async(req, res) => {
@@ -35,6 +36,7 @@ dbCon();
 //     }
 // });
 app.use("/api", userData);
+
 
 // req will be come from frontend (user provided data)
 // res will send to frontend the from server/backend (server responded data/result)

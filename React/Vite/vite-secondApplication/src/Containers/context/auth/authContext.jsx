@@ -5,6 +5,8 @@ export function AuthContext({ children }) {
   const [users, setUsers] = useState({});
   const login = (userData) => {
     setUsers(userData);
+    console.log(userData, "line 8");
+    console.log(users, "line 9");
   };
   const logout = () => {
     setUsers(null);

@@ -10,7 +10,7 @@ import { configuration } from "../config";
  */
 export async function Signup(firstName, lastName, email, password, role) {
   try {
-    const data = await apiRequest(`/signup`, {
+    const data = await apiRequest(`/createUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
