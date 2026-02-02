@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("./../db/userSchema");
+const fs = require("fs"); // For file system operations (like deleting old files)
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -7,6 +8,7 @@ async function signUp(req, res) {
   try {
     // destructure
     const { firstName, lastName, email, password, role } = req.body;
+    const avatar = req.file ? req.file.filename : null;
     //here we are doing bcryption user password
     bcrypt.genSalt(saltRounds, function (err, salt) {
       // i.e : askndjasndjisnadine99inedin980r32jndw9o pasword in hash
@@ -17,6 +19,7 @@ async function signUp(req, res) {
           email,
           password: hash,
           role,
+          profilePath: avatar,
         };
         // Store hash in your password DB.
         const result = new userModel(user).save();
@@ -35,6 +38,63 @@ async function signUp(req, res) {
     });
   }
 }
+
+// Read Profiles (R)
+const getProfiles = async (req, res) => {
+  try {
+    const profiles = await userModel.find();
+    res.status(200).json({ success: true, data: profiles });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+// Update Profile (U)
+const updateProfile = async (req, res) => {
+  try {
+    const { name, email } = req.body;
+    let updateData = { name, email };
+
+    if (req.file) {
+      // If a new file is uploaded, handle deleting the old one
+      const oldProfile = await userModel.findById(req.params.id);
+      if (oldProfile && oldProfile.avatar) {
+        fs.unlinkSync(`uploads/${oldProfile.avatar}`); // Delete old file
+      }
+      updateData.avatar = req.file.filename;
+    }
+
+    const profile = await userModel.findByIdAndUpdate(req.params.id, updateData, {
+      new: true,
+      runValidators: true,
+    });
+    if (!profile)
+      return res
+        .status(404)
+        .json({ success: false, message: "Profile not found" });
+    res.status(200).json({ success: true, data: profile });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+};
+
+// Delete Profile (D)
+const deleteProfile = async (req, res) => {
+  try {
+    const profile = await userModel.findByIdAndDelete(req.params.id);
+    if (!profile)
+      return res
+        .status(404)
+        .json({ success: false, message: "Profile not found" });
+
+    if (profile.avatar) {
+      fs.unlinkSync(`uploads/${profile.avatar}`); // Delete associated file
+    }
+    res.status(200).json({ success: true, message: "Profile deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
 
 async function login(req, res) {
   // destructure
@@ -71,7 +131,7 @@ async function login(req, res) {
     res.send({
       status: 200,
       message: "user login successfully",
-      dbUser
+      dbUser,
       // token,
     });
     // }
@@ -130,4 +190,12 @@ async function updateUser(req, res) {
     });
   }
 }
-module.exports = { signUp, login, home, updateUser };
+module.exports = {
+  signUp,
+  login,
+  home,
+  updateUser,
+  updateProfile,
+  deleteProfile,
+  getProfiles,
+};

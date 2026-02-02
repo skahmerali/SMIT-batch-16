@@ -35,8 +35,10 @@ dbCon();
 //         })
 //     }
 // });
-app.use("/api", userData);
 
+// Serve static files (uploaded images)
+app.use("/uploads", express.static("uploads"));
+app.use("/api", userData);
 
 // req will be come from frontend (user provided data)
 // res will send to frontend the from server/backend (server responded data/result)
