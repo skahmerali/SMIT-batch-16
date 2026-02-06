@@ -1,7 +1,18 @@
 const express = require("express");
-const { signUp, login, home, updateUser, getProfiles, updateProfile, deleteProfile } = require("../controller/auth");
+const {
+  signUp,
+  login,
+  home,
+  updateUser,
+  getProfiles,
+  updateProfile,
+  deleteProfile,
+  mailSending,
+} = require("../controller/auth");
 const authrization = require("../middleware/authentication");
 const upload = require("./../middleware/imageUploading");
+
+// for nodemailer documentation: https://mailtrap.io/blog/expressjs-send-email/
 
 const router = express.Router();
 
@@ -19,5 +30,6 @@ router.delete("/:id", deleteProfile);
 router.post("/login", login);
 router.post("/home", authrization, home);
 router.put("/userfinder", updateUser);
+router.put("/send-email", mailSending);
 
 module.exports = router;

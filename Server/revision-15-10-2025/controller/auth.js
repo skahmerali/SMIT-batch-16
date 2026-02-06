@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("./../db/userSchema");
+const nodemailer = require("nodemailer");
 const fs = require("fs"); // For file system operations (like deleting old files)
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -64,10 +65,14 @@ const updateProfile = async (req, res) => {
       updateData.avatar = req.file.filename;
     }
 
-    const profile = await userModel.findByIdAndUpdate(req.params.id, updateData, {
-      new: true,
-      runValidators: true,
-    });
+    const profile = await userModel.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!profile)
       return res
         .status(404)
@@ -190,6 +195,48 @@ async function updateUser(req, res) {
     });
   }
 }
+async function mailSending(req, res) {
+  try {
+    // Create a reusable transporter object using SMTP transport.
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: 587,
+      secure: false, // use false for STARTTLS; true for SSL on port 465
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+    const { name, subject, email, message } = req.body; // Destructure and retrieve data from request body.
+
+    // Validate required fields.
+    if (!name || !subject || !email || !message) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "Missing required fields" });
+    }
+    // Prepare the email message options.
+    const mailOptions = {
+      from: process.env.SENDER_EMAIL, // Sender address from environment variables.
+      to: `${name} <${email}>`, // Recipient's name and email address.
+      replyTo: process.env.REPLY_TO, // Sets the email address for recipient responses.
+      subject: subject, // Subject line.
+      text: message, // Plaintext body.
+    };
+    // Send email and log the response.
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.response);
+    res
+      .status(200)
+      .json({ status: "success", message: "Email sent successfully" });
+  } catch (err) {
+    res.send({
+      status: 500,
+      message: "user not authorized",
+      err,
+    });
+  }
+}
 module.exports = {
   signUp,
   login,
@@ -198,4 +245,5 @@ module.exports = {
   updateProfile,
   deleteProfile,
   getProfiles,
+  mailSending,
 };
