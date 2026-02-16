@@ -26,7 +26,8 @@ const ProductSchema = new Schema({
     },
 
     category: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
+        
         ref: "Category",
         required: true,
     },

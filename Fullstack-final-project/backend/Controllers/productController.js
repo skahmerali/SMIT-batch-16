@@ -24,4 +24,57 @@ const getProducts = async (req, res) => {
     }
 }
 
-module.exports = { addProduct, getProducts };
+const deleteProduct = async (req, res) => {
+
+    const { id } = req.query;
+    console.log(id)
+    try {
+        const deleteprod = await Product.findByIdAndDelete(id);
+        if (!deleteprod) {
+            return res.status(400).json({
+                message: "Product Not found"
+            })
+        }
+
+
+        res.status(200).json({
+            message :"Product deleted Successfully",
+        })
+    }catch(err){
+        res.status(400).json({
+            message : "Product Not Found",
+            err,
+        })
+    }
+
+}
+
+
+
+const updateProduct = async (req, res) => {
+
+    const { id } = req.query;
+    const { name, description, price, discountPrice, category, brand, sku, stock, isActive } = req.body;
+    console.log(id)
+    try {
+        const updateprod = await Product.findByIdAndUpdate(id, { name, description, price, discountPrice, category, brand, sku, stock, isActive });
+        if (!updateprod) {
+            return res.status(400).json({
+                message: "Product Not found"
+            })
+        }
+
+
+        res.status(200).json({
+            message :"Product Updated  Successfully",
+            updateprod
+        })
+    }catch(err){
+        res.status(400).json({
+            message : "Product Not Found",
+            err,
+        })
+    }
+
+}
+module.exports = { addProduct, getProducts , deleteProduct ,updateProduct};
