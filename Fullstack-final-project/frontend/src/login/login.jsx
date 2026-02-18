@@ -7,17 +7,15 @@ import {
     Container,
     Alert
 } from "@mui/material";
-import { signup } from "../services/singup";
+import { login } from "../services/login";
 
-export default function SignupForm() {
+export default function LoginForm() {
 
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState(false);
     const [formData, setFormData] = useState({
-        name: "",
         email: "",
         password: "",
-        role:"hr"
     });
 
     const handleChange = (e) => {
@@ -26,11 +24,8 @@ export default function SignupForm() {
 
     const validate = () => {
         let tempErrors = {};
-
-        if (!formData.name) tempErrors.name = "Name is required";
         if (!formData.email) tempErrors.email = "Email is required";
         if (!formData.password) tempErrors.password = "Password is required";
-
         setErrors(tempErrors);
         return Object.keys(tempErrors).length === 0;
     };
@@ -42,9 +37,8 @@ export default function SignupForm() {
         if (validate()) {
             console.log("Form Data:", formData);
             setSuccess(true);
-            signup(formData)
+            login(formData)
         }
-
     };
 
     return (
@@ -55,20 +49,10 @@ export default function SignupForm() {
                 sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2 }}
             >
                 <Typography variant="h4" textAlign="center">
-                    Sign Up
+                    login
                 </Typography>
 
-                {success && <Alert severity="success">Signup Successful!</Alert>}
-
-                <TextField
-                    label="Full Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    error={!!errors.name}
-                    helperText={errors.name}
-                    fullWidth
-                />
+                {success && <Alert severity="success">login Successful!</Alert>}
 
                 <TextField
                     label="Email"
@@ -92,9 +76,9 @@ export default function SignupForm() {
                     fullWidth
                 />
 
-     
+
                 <Button variant="contained" type="submit" size="large">
-                    Create Account
+                    login 
                 </Button>
             </Box>
         </div>

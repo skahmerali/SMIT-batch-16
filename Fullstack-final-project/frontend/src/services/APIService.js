@@ -8,9 +8,9 @@
 export const apiRequest = (url, params = {}) => {
     console.log(url, params);
     return new Promise((resolve, reject) => {
-        fetch(`http://localhost:3000/api${url}`, params)
+        fetch(`http://localhost:3000${url}`, params)
             .then((response) => {
-                console.log(response);
+                console.log(response, "line 13");
                 if (!response.ok) {
                     // If the response is not OK (e.g., 404, 500), reject the promise with an error
                     throw new Error(`HTTP error! status: ${response.status}`);
