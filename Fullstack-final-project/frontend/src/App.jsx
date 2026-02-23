@@ -7,18 +7,16 @@ import Router from './router/router';
 import Navbar from './Navbar/Navbar';
 
 // craeate routing for all pages and if the between Home(website customer facing), Signup , login and dashboard. Now if the employe login with its credential so need to show authorized view and if the admin login so that view should be different 
+// Integrate the Get /products API so we can render all products in home page and after login and signup admin can Perform the CRUD of Products and also render the dashboard view.
 function App() {
     return (
 
         <BrowserRouter>
-        <Navbar />
-        
-        <>
-        <Router />
-        
-        {/* <SignupForm />
+            <Navbar />
+            <Router />
+
+            {/* <SignupForm />
         <LoginForm /> */}
-        </>
         </BrowserRouter>
     )
 }
