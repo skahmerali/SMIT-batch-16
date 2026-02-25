@@ -17,7 +17,7 @@ function Home() {
           ...prevProducts,
           ...response
         ])
-        console.log(products)
+        console.log(products, "line20")
       } catch (err) {
         console.log(`Products not Found ${err.message}`)
       }
@@ -26,13 +26,20 @@ function Home() {
   }, [])
   return (
     <div>
-      {/* {
-        products.map(data => {
-          return (
-            <div> {data} </div>
-          )
-        })
-      } */}
+      {
+        products.map((data, key) => (
+          <div key={data._id}>
+            <ul>
+              <li>Name :{data.name}</li>
+              <li>Description :{data.description}</li>
+              <li>Brand :{data.brand}</li>
+              <li>Price :{data.price}</li>
+              <li>Discount Price :{data.discountPrice}</li>
+            </ul>
+          </div>
+        ))
+
+      }
     </div>
   )
 }

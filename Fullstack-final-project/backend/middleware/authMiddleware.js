@@ -8,6 +8,7 @@ const auth = async (req , res, next)=>{
             return res.send({message : "session expired"})
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(decoded)
         req.user = await User.findById(decoded.id).select('-password')
         next()
 
