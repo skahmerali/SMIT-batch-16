@@ -17,7 +17,6 @@ function Home() {
           ...prevProducts,
           ...response
         ])
-        console.log(products, "line20")
       } catch (err) {
         console.log(`Products not Found ${err.message}`)
       }
@@ -35,6 +34,7 @@ function Home() {
               <li>Brand :{data.brand}</li>
               <li>Price :{data.price}</li>
               <li>Discount Price :{data.discountPrice}</li>
+              <li><button>edit</button></li>
             </ul>
           </div>
         ))

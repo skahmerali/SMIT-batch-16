@@ -55,7 +55,7 @@ const updateProduct = async (req, res) => {
 
     const { id } = req.query;
     const { name, description, price, discountPrice, category, brand, sku, stock, isActive } = req.body;
-    console.log(id)
+
     try {
         const updateprod = await Product.findByIdAndUpdate(id, { name, description, price, discountPrice, category, brand, sku, stock, isActive });
         if (!updateprod) {
